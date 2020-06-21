@@ -1,0 +1,62 @@
+**********************************************************************************************************
+                  Text Dependent Speaker Recognition System using MFCC
+**********************************************************************************************************
+                                                                                            version 1.0.0
+
+
+
+
+
+
+Introduction to the project:
+
+The main aim of out project is to create a speaker recognition system using MFCC.
+The abbreviation of MFCC is Mel Frequency Cepstral Coefficients.
+The reason for choosing MFCC is because the frequencies are equally spaced on a mel scale.
+This approximates the human auditory systems response more closely than the linearly spaced frequency bands in normal cepstrum.
+We used Dynamic Time Wrapping to compare given voices.
+
+How MFCC is calculated:
+
+1.Take FFT of a signal.
+2.Use Triangular overlapping windows to map powers of the cepstrum onto the mel scale.
+3.Take the logs of the powers at each of the mel frequencies.
+4.Take discrete cosine transform of the mel log powers.
+5.The MFCC's are amplitudes of the list of mel log power.
+
+Dynamic Time Wrapping(DTW):
+
+DTW is used for calculating the similarity between two temporal sequences which may vary in time.
+This is used as the person may speak the same word at different rates of time.
+We calculate the best matching cost and the slope of the similarity line in the DTW plot.
+
+
+Project Working Methodology:
+
+Storing Samples:
+
+1.First we record the audio sample of the user.
+2.While recording we create an audio buffer of 2 sec before actually prompting the user.
+3.This helps us in having better accuracy while removing silent parts of the audio.
+4.We remove the trailing silent parts of the audio.
+5.Now we apply the MFCC algorithm on the audio clip.
+6.We measure 40 Coefficients per frame and we get a 2d array representing the MFCC.
+7.Now we save this MFCC array into a text file.
+8.We need at least 5 samples per user for better accuracy.
+
+Comparing Samples:
+
+1.We record the audio sample of the test.
+2.We calculate the MFCC of the audio sample.
+3.We now perform DTW of the test MFCC and the MFCC's of all the stored samples.
+4.We have a boundary of the slope above which we can safely declare that the samples did not match.
+5.Within the given boundary, We now search for the sample which has the lowest best cost.
+6.It is then checked with a treshold value.
+7.If all the conditions are met we can confirm the speaker.
+
+
+Constarints in this method:
+
+1.The speaker is supposed to speak only a single word as it is text dependent.
+2.We needed to add a buffer of 2 sec in order to remove silent parts more accurately. 
+3.The system is noise prone as the quality of the system depends on the mic used the the recording capability of the hardware.
