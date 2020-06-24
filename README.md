@@ -24,4 +24,4 @@ This project contains a speaker recognition system using MFCC and DTW.
 3. The program starts running now.
 
 # Precaution
-A library called numba got a new update in the last month. It deleted some of the files present in the previous version. This caused librosa to crash as it has dependencies on the files that got deleted. So for those who want to run it, we suggest you to install numba version 4.8 after insalling librosa so that the new version of numba will be replaced by the previous version.
+A library called numba got a new update in this month. It deleted some of the files present in the previous version. This caused librosa to crash as it has dependencies on the files that got deleted. So for those who want to run it, we suggest you to install numba version 4.8 after insalling librosa so that the new version of numba will be replaced by the previous version.
