@@ -35,6 +35,7 @@ def compare_samples():
                 if slope[0]>0.75 and slope[0]<1.25:
                     if bestcost<cost:
                         cost = bestcost
+                        slope1 = slope[0]
                         flag=folder
         if cost == 80:
             print("sorry,no user matched")
@@ -43,7 +44,7 @@ def compare_samples():
             Output = flag
             print("The voice matched to {}".format(flag))
             print("bestcost={}".format(cost))
-            print("slope={}".format(slope[0]))
+            print("slope={}".format(slope1))
             print(Output)
     except FileNotFoundError:
         print("file not found")
